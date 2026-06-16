@@ -17,6 +17,21 @@ function ProductList() {
       });
   }, []);
 
+  const deleteProduct = (id) => {
+    axios
+      .delete(`http://localhost:3000/products/${id}`)
+      .then((response) => {
+        console.log(response.data);
+
+        alert("Product Deleted");
+
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <h2>Products</h2>
@@ -25,6 +40,7 @@ function ProductList() {
         <div key={product._id}>
           <h3>{product.name}</h3>
           <p>Price: {product.price}</p>
+          <button onClick={() => deleteProduct(product._id)}>Delete</button>
         </div>
       ))}
     </div>
