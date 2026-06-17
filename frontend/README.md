@@ -194,4 +194,4 @@ Through this task, the following concepts were learned and implemented:
 
 ## Outcome
 
-Successfully developed a React frontend integrated with Express.js and MongoDB Atlas. The application supports complete CRUD functionality, stock management, and page navigation using React Router....
+Successfully developed a React frontend integrated with Express.js and MongoDB Atlas. The application supports complete CRUD functionality, stock management, and page navigation using React Router.
