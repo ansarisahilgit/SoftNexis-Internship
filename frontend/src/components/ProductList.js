@@ -6,6 +6,7 @@ function ProductList() {
   const [editingId, setEditingId] = useState(null);
   const [editName, setEditName] = useState("");
   const [editPrice, setEditPrice] = useState("");
+  const [editInStock, setEditInStock] = useState(true);
 
   useEffect(() => {
     axios
@@ -40,6 +41,7 @@ function ProductList() {
       .put(`http://localhost:3000/products/${id}`, {
         name: editName,
         price: editPrice,
+        inStock: editInStock,
       })
       .then((response) => {
         console.log(response.data);
@@ -61,6 +63,7 @@ function ProductList() {
         <div key={product._id}>
           <h3>{product.name}</h3>
           <p>Price: {product.price}</p>
+          <p>In Stock: {product.inStock ? "Yes" : "No"}</p>
           <button onClick={() => deleteProduct(product._id)}>Delete</button>
           <button
             onClick={() => {
@@ -84,6 +87,13 @@ function ProductList() {
                 value={editPrice}
                 onChange={(e) => setEditPrice(e.target.value)}
               />
+              <select
+                value={editInStock}
+                onChange={(e) => setEditInStock(e.target.value === "true")}
+              >
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
               <button onClick={() => updateProduct(product._id)}>Update</button>
             </div>
           )}
