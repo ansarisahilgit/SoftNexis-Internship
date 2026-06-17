@@ -1,13 +1,33 @@
-import ProductList from "./components/ProductList";
-import AddProduct from "./components/AddProduct";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import Home from "./pages/Home";
+import Products from "./pages/Products";
+import AddProductPage from "./pages/AddProductPage";
 
 function App() {
   return (
-    <div>
-      <h1>MERN Frontend Started</h1>
-      <ProductList />
-      <AddProduct />
-    </div>
+    <BrowserRouter>
+      <nav>
+        <Link to="/">Home</Link>
+
+        {" | "}
+
+        <Link to="/products">Products</Link>
+
+        {" | "}
+
+        <Link to="/add-product">Add Product</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+
+        <Route path="/products" element={<Products />} />
+
+        <Route path="/add-product" element={<AddProductPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
