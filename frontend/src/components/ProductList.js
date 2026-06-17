@@ -57,7 +57,7 @@ function ProductList() {
   };
 
   return (
-    <div>
+    <div className="products-container">
       <h2>Products</h2>
 
       {products.map((product) => (
