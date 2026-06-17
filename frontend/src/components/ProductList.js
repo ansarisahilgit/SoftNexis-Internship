@@ -3,6 +3,9 @@ import axios from "axios";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
+  const [editingId, setEditingId] = useState(null);
+  const [editName, setEditName] = useState("");
+  const [editPrice, setEditPrice] = useState("");
 
   useEffect(() => {
     axios
@@ -32,6 +35,24 @@ function ProductList() {
       });
   };
 
+  const updateProduct = (id) => {
+    axios
+      .put(`http://localhost:3000/products/${id}`, {
+        name: editName,
+        price: editPrice,
+      })
+      .then((response) => {
+        console.log(response.data);
+
+        alert("Product Updated Successfully");
+
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <h2>Products</h2>
@@ -41,6 +62,31 @@ function ProductList() {
           <h3>{product.name}</h3>
           <p>Price: {product.price}</p>
           <button onClick={() => deleteProduct(product._id)}>Delete</button>
+          <button
+            onClick={() => {
+              setEditingId(product._id);
+              setEditName(product.name);
+              setEditPrice(product.price);
+            }}
+          >
+            Edit
+          </button>
+          {editingId === product._id && (
+            <div>
+              <input
+                type="text"
+                value={editName}
+                onChange={(e) => setEditName(e.target.value)}
+              />
+
+              <input
+                type="number"
+                value={editPrice}
+                onChange={(e) => setEditPrice(e.target.value)}
+              />
+              <button onClick={() => updateProduct(product._id)}>Update</button>
+            </div>
+          )}
         </div>
       ))}
     </div>
