@@ -1,9 +1,11 @@
+import "../styles/AddProduct.css";
 import { useState } from "react";
 import axios from "axios";
 
 function AddProduct() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
+  const [inStock, setInStock] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,6 +14,7 @@ function AddProduct() {
       .post("http://localhost:3000/products", {
         name,
         price,
+        inStock,
       })
       .then((response) => {
         console.log(response.data);
@@ -51,6 +54,15 @@ function AddProduct() {
 
         <br />
         <br />
+        <label>In Stock:</label>
+
+        <select
+          value={inStock}
+          onChange={(e) => setInStock(e.target.value === "true")}
+        >
+          <option value="true">True</option>
+          <option value="false">False</option>
+        </select>
 
         <button type="submit">Add Product</button>
       </form>

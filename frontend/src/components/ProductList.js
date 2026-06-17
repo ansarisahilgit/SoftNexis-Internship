@@ -1,3 +1,4 @@
+import "../styles/ProductList.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -60,7 +61,7 @@ function ProductList() {
       <h2>Products</h2>
 
       {products.map((product) => (
-        <div key={product._id}>
+        <div key={product._id} className="product-card">
           <h3>{product.name}</h3>
           <p>Price: {product.price}</p>
           <p>In Stock: {product.inStock ? "Yes" : "No"}</p>
