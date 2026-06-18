@@ -9,3 +9,5 @@ Repository for my MERN stack internship. Contains independent sub-projects and w
 - [x] Repository setup
 - [ ] Weekly task assignments
 - [ ] Final evaluation
+## 🚀 Getting Started
+> Instructions on how to clone and run the sub-projects will be added as tasks progress.
