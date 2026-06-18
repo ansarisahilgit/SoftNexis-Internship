@@ -5,3 +5,7 @@ Repository for my MERN stack internship. Contains independent sub-projects and w
 - **Express.js** (Backend Framework)
 - **React.js** (Frontend Library)
 - **Node.js** (Runtime Environment)
+## 📈 Project Status
+- [x] Repository setup
+- [ ] Weekly task assignments
+- [ ] Final evaluation
