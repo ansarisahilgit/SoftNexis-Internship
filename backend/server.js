@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const productRoutes = require("./routes/productRoutes");
+const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 app.use(cors());
@@ -16,6 +17,7 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use("/products", productRoutes);
+app.use("/api/auth", authRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
