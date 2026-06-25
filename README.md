@@ -14,33 +14,33 @@ This repository documents my learning and project development during the SoftNex
 
 ### Frontend
 
-* React.js
-* React Router DOM
-* Axios
-* HTML5
-* CSS3
+- React.js
+- React Router DOM
+- Axios
+- HTML5
+- CSS3
 
 ### Backend
 
-* Node.js
-* Express.js
+- Node.js
+- Express.js
 
 ### Database
 
-* MongoDB Atlas
-* Mongoose
+- MongoDB Atlas
+- Mongoose
 
 ### Authentication
 
-* JSON Web Token (JWT)
-* bcryptjs
+- JSON Web Token (JWT)
+- bcryptjs
 
 ### Tools
 
-* Git
-* GitHub
-* Postman
-* Visual Studio Code
+- Git
+- GitHub
+- Postman
+- Visual Studio Code
 
 ---
 
@@ -81,6 +81,20 @@ Developed a RESTful API for Product Management using Express.js and MongoDB.
 
 ### Features
 
+- Create Product
+- Read Products
+- Update Product
+- Delete Product
+- MongoDB Atlas Integration
+- Express Validator
+- REST API Testing using Postman
+
+### Technologies
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
 * Create Product
 * Read Products
 * Update Product
@@ -89,14 +103,6 @@ Developed a RESTful API for Product Management using Express.js and MongoDB.
 * Express Validator
 * REST API Testing using Postman
 
-### Technologies
-
-* Node.js
-* Express.js
-* MongoDB
-* Mongoose
-
----
 
 ## ✅ Task 2 – React Frontend
 
@@ -106,6 +112,19 @@ Built a React frontend to consume the REST API developed in Task 1.
 
 ### Features
 
+- Home Page
+- Product Listing
+- Add Product
+- Update Product
+- Delete Product
+- Axios API Integration
+- React Router Navigation
+
+### Technologies
+
+- React.js
+- Axios
+- React Router DOM
 * Home Page
 * Product Listing
 * Add Product
@@ -130,22 +149,22 @@ Implemented secure authentication and authorization using JSON Web Tokens.
 
 ### Features
 
-* User Registration
-* User Login
-* Password Hashing using bcryptjs
-* JWT Token Generation
-* JWT Authentication Middleware
-* Protected Backend Routes
-* Protected Frontend Routes
-* Local Storage Authentication
-* Logout Functionality
+- User Registration
+- User Login
+- Password Hashing using bcryptjs
+- JWT Token Generation
+- JWT Authentication Middleware
+- Protected Backend Routes
+- Protected Frontend Routes
+- Local Storage Authentication
+- Logout Functionality
 
 ### Technologies
 
-* JWT
-* bcryptjs
-* React Router DOM
-* Axios
+- JWT
+- bcryptjs
+- React Router DOM
+- Axios
 
 ---
 
@@ -205,29 +224,29 @@ JWT_SECRET=your_secret_key
 
 # 📌 Features Implemented
 
-* RESTful API Development
-* MongoDB Atlas Integration
-* React Frontend
-* CRUD Operations
-* JWT Authentication
-* Password Encryption
-* Protected Routes
-* Authorization Middleware
-* API Integration using Axios
-* Responsive Navigation
-* Git Branching Workflow
-* GitHub Pull Requests
+- RESTful API Development
+- MongoDB Atlas Integration
+- React Frontend
+- CRUD Operations
+- JWT Authentication
+- Password Encryption
+- Protected Routes
+- Authorization Middleware
+- API Integration using Axios
+- Responsive Navigation
+- Git Branching Workflow
+- GitHub Pull Requests
 
 ---
 
 # 📈 Project Status
 
-* ✅ Repository Setup
-* ✅ Task 1 Completed
-* ✅ Task 2 Completed
-* ✅ Task 3 Completed
-* ⏳ Task 4 In Progress
-* ⏳ Final Internship Evaluation
+- ✅ Repository Setup
+- ✅ Task 1 Completed
+- ✅ Task 2 Completed
+- ✅ Task 3 Completed
+- ⏳ Task 4 In Progress
+- ⏳ Final Internship Evaluation
 
 ---
 
@@ -235,13 +254,13 @@ JWT_SECRET=your_secret_key
 
 Add screenshots for:
 
-* Task 1 API Testing
-* MongoDB Atlas
-* React Frontend
-* User Registration
-* User Login
-* JWT Authentication
-* Product CRUD Operations
+- Task 1 API Testing
+- MongoDB Atlas
+- React Frontend
+- User Registration
+- User Login
+- JWT Authentication
+- Product CRUD Operations
 
 ---
 
@@ -261,11 +280,11 @@ GitHub: https://github.com/ansarisahilgit
 
 Through this internship I gained practical experience in:
 
-* Backend API Development
-* Frontend Development with React
-* Database Design using MongoDB
-* JWT Authentication
-* REST API Integration
-* Git & GitHub Workflow
-* Professional Project Structure
-* Full-Stack MERN Development
+- Backend API Development
+- Frontend Development with React
+- Database Design using MongoDB
+- JWT Authentication
+- REST API Integration
+- Git & GitHub Workflow
+- Professional Project Structure
+- Full-Stack MERN Development
