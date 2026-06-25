@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import AddProductPage from "./pages/AddProductPage";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -19,13 +21,12 @@ function App() {
 
         <Link to="/add-product">Add Product</Link>
       </nav>
-
       <Routes>
         <Route path="/" element={<Home />} />
-
         <Route path="/products" element={<Products />} />
-
         <Route path="/add-product" element={<AddProductPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   );
