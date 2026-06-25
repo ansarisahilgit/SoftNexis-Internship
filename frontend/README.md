@@ -1,34 +1,42 @@
-# Product Management System - Task 2
+# Task 3 - JWT Authentication (MERN Stack)
 
 ## Overview
 
-Task 2 focuses on developing the frontend of the Product Management System using React.js and integrating it with the backend APIs developed in Task 1.
+This project implements JWT (JSON Web Token) based authentication for the MERN Stack CRUD application developed in previous tasks.
 
-The application allows users to perform complete CRUD (Create, Read, Update, Delete) operations on products stored in MongoDB Atlas through an Express.js backend.
+The application allows users to register, log in, and securely access protected product management features using JWT authentication.
 
 ---
 
 ## Features
 
-- View all products
-- Add new products
-- Update existing products
-- Delete products
-- Manage product stock status (In Stock / Out of Stock)
-- React Router navigation
-- Axios API integration
-- Basic responsive user interface
+### Authentication
+
+- User Registration
+- User Login
+- Password Hashing using bcryptjs
+- JWT Token Generation
+- JWT Verification Middleware
+- Protected Backend Routes
+
+### Product Management
+
+- Create Product
+- View Products
+- Update Product
+- Delete Product
+
+All product operations require a valid JWT token.
 
 ---
 
-## Technologies Used
+## Tech Stack
 
 ### Frontend
 
 - React.js
-- JavaScript (ES6)
-- Axios
 - React Router DOM
+- Axios
 - CSS
 
 ### Backend
@@ -38,160 +46,184 @@ The application allows users to perform complete CRUD (Create, Read, Update, Del
 - MongoDB Atlas
 - Mongoose
 
-### Version Control
+### Authentication
 
-- Git
-- GitHub
+- JWT (jsonwebtoken)
+- bcryptjs
 
 ---
 
 ## Project Structure
 
-```text
-frontend/
+```
+backend
 │
-├── public/
+├── controllers
+│   ├── authController.js
+│   └── productController.js
 │
-├── src/
-│   │
-│   ├── components/
-│   │   ├── AddProduct.js
-│   │   └── ProductList.js
-│   │
-│   ├── pages/
-│   │   ├── Home.js
-│   │   ├── Products.js
-│   │   └── AddProductPage.js
-│   │
-│   ├── styles/
-│   │   ├── App.css
-│   │   ├── Home.css
-│   │   ├── ProductList.css
-│   │   └── AddProduct.css
-│   │
-│   ├── App.js
-│   ├── index.js
-│   └── index.css
+├── middleware
+│   └── authMiddleware.js
 │
-├── package.json
-└── package-lock.json
+├── models
+│   ├── User.js
+│   └── Product.js
+│
+├── routes
+│   ├── authRoutes.js
+│   └── productRoutes.js
+│
+├── .env
+├── server.js
+└── package.json
+
+
+frontend
+│
+├── components
+│   ├── AddProduct.js
+│   ├── ProductList.js
+│   └── ProtectedRoute.js
+│
+├── pages
+│   ├── Home.js
+│   ├── Login.js
+│   └── Register.js
+│
+├── App.js
+└── package.json
 ```
 
 ---
 
-## Functionalities Implemented
-
-### Create Product
-
-Users can add a new product by providing:
-
-- Product Name
-- Product Price
-- Stock Status
-
----
-
-### Read Products
-
-Displays all products stored in MongoDB.
-
-Information shown:
-
-- Product Name
-- Product Price
-- Stock Status
-
----
-
-### Update Product
-
-Users can modify:
-
-- Product Name
-- Product Price
-- Stock Status
-
----
-
-### Delete Product
-
-Products can be removed from the database using the Delete button.
-
----
-
-## Routing
-
-Implemented using React Router DOM.
-
-| Route        | Description          |
-| ------------ | -------------------- |
-| /            | Home Page            |
-| /products    | Product Listing Page |
-| /add-product | Add Product Page     |
-
----
-
-## API Endpoints Used
-
-| Method | Endpoint      |
-| ------ | ------------- |
-| GET    | /products     |
-| POST   | /products     |
-| PUT    | /products/:id |
-| DELETE | /products/:id |
-
----
-
-## How to Run the Project
+## Installation
 
 ### Backend
 
 ```bash
 cd backend
+
 npm install
-npm start
+
+npm run dev
 ```
-
-Backend runs on:
-
-```text
-http://localhost:3000
-```
-
----
 
 ### Frontend
 
 ```bash
 cd frontend
+
 npm install
+
 npm start
 ```
 
-Frontend runs on:
+---
 
-```text
-http://localhost:3001
+## Environment Variables
+
+Create a `.env` file inside the backend folder.
+
+```env
+PORT=3000
+
+MONGO_URI=your_mongodb_connection_string
+
+JWT_SECRET=your_secret_key
 ```
 
 ---
 
-## Learning Outcomes
+## API Endpoints
 
-Through this task, the following concepts were learned and implemented:
+### Authentication
 
-- React Components
-- useState Hook
-- useEffect Hook
-- Axios API Calls
-- CRUD Operations
-- React Router
-- Frontend-Backend Integration
-- MongoDB Data Handling
-- Git & GitHub Workflow
+### Register User
+
+```
+POST /api/auth/register
+```
+
+### Login User
+
+```
+POST /api/auth/login
+```
 
 ---
 
-## Outcome
+### Products
 
-Successfully developed a React frontend integrated with Express.js and MongoDB Atlas. The application supports complete CRUD functionality, stock management, and page navigation using React Router.
+### Get All Products
+
+```
+GET /products
+```
+
+### Add Product
+
+```
+POST /products
+```
+
+### Update Product
+
+```
+PUT /products/:id
+```
+
+### Delete Product
+
+```
+DELETE /products/:id
+```
+
+> All Product routes require a valid JWT token.
+
+---
+
+## Authentication Flow
+
+1. User registers with email and password.
+2. Password is hashed using bcryptjs.
+3. User logs in.
+4. Server generates a JWT token.
+5. Token is stored in browser localStorage.
+6. Frontend sends the token in the Authorization header.
+7. Backend verifies the token before allowing access to protected routes.
+
+---
+
+## Security Features
+
+- Password Hashing using bcryptjs
+- JWT Authentication
+- Protected API Routes
+- Authorization Middleware
+- Token Verification
+
+---
+
+## Screenshots
+
+Include screenshots of:
+
+- User Registration
+- User Login
+- JWT Token Response
+- Add Product
+- Product List
+- Update Product
+- Delete Product
+
+---
+
+## Author
+
+**Md Sahil Ansari**
+
+B.Tech Computer Science & Engineering
+
+SoftNexis MERN Stack Internship
+
+Task 3 – JWT Authentication
