@@ -95,8 +95,14 @@ Developed a RESTful API for Product Management using Express.js and MongoDB.
 - Express.js
 - MongoDB
 - Mongoose
+* Create Product
+* Read Products
+* Update Product
+* Delete Product
+* MongoDB Atlas Integration
+* Express Validator
+* REST API Testing using Postman
 
----
 
 ## ✅ Task 2 – React Frontend
 
@@ -119,6 +125,19 @@ Built a React frontend to consume the REST API developed in Task 1.
 - React.js
 - Axios
 - React Router DOM
+* Home Page
+* Product Listing
+* Add Product
+* Update Product
+* Delete Product
+* Axios API Integration
+* React Router Navigation
+
+### Technologies
+
+* React.js
+* Axios
+* React Router DOM
 
 ---
 
