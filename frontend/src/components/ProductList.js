@@ -10,11 +10,15 @@ function ProductList() {
   const [editInStock, setEditInStock] = useState(true);
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
     axios
-      .get("http://localhost:3000/products")
+      .get("http://localhost:3000/products", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
         console.log(response.data);
-
         setProducts(response.data);
       })
       .catch((error) => {
@@ -23,13 +27,16 @@ function ProductList() {
   }, []);
 
   const deleteProduct = (id) => {
+    const token = localStorage.getItem("token");
     axios
-      .delete(`http://localhost:3000/products/${id}`)
+      .delete(`http://localhost:3000/products/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
         console.log(response.data);
-
         alert("Product Deleted");
-
         window.location.reload();
       })
       .catch((error) => {
@@ -38,17 +45,24 @@ function ProductList() {
   };
 
   const updateProduct = (id) => {
+    const token = localStorage.getItem("token");
     axios
-      .put(`http://localhost:3000/products/${id}`, {
-        name: editName,
-        price: editPrice,
-        inStock: editInStock,
-      })
+      .put(
+        `http://localhost:3000/products/${id}`,
+        {
+          name: editName,
+          price: editPrice,
+          inStock: editInStock,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      )
       .then((response) => {
         console.log(response.data);
-
         alert("Product Updated Successfully");
-
         window.location.reload();
       })
       .catch((error) => {

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -18,8 +20,7 @@ function Login() {
       );
 
       localStorage.setItem("token", data.token);
-
-      alert("Login Successful");
+      navigate("/products");
     } catch (error) {
       console.log(error.response.data);
       alert(error.response.data.message);

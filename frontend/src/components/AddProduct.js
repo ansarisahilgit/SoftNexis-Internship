@@ -6,16 +6,25 @@ function AddProduct() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [inStock, setInStock] = useState(true);
+  const token = localStorage.getItem("token");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3000/products", {
-        name,
-        price,
-        inStock,
-      })
+      .post(
+        "http://localhost:3000/products",
+        {
+          name,
+          price,
+          inStock,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      )
       .then((response) => {
         console.log(response.data);
 
@@ -29,7 +38,6 @@ function AddProduct() {
         console.log(error);
       });
   };
-
   return (
     <div className="form-container">
       <h2>Add Product</h2>

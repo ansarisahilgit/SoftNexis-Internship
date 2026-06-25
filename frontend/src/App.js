@@ -9,6 +9,12 @@ import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
+  const token = localStorage.getItem("token");
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
   return (
     <BrowserRouter>
       <nav>
@@ -16,16 +22,27 @@ function App() {
 
         {" | "}
 
-        <Link to="/register">Register</Link>
+        {token ? (
+          <>
+            <Link to="/products">Products</Link>
 
-        {" | "}
+            {" | "}
 
-        <Link to="/login">Login</Link>
-        {" | "}
-        <Link to="/products">Products</Link>
+            <Link to="/add-product">Add Product</Link>
 
-        {" | "}
-        <Link to="/add-product">Add Product</Link>
+            {" | "}
+
+            <button onClick={logout}>Logout</button>
+          </>
+        ) : (
+          <>
+            <Link to="/login">Login</Link>
+
+            {" | "}
+
+            <Link to="/register">Register</Link>
+          </>
+        )}
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
