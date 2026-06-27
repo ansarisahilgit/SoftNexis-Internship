@@ -2,7 +2,14 @@ const Product = require("../models/Product");
 
 exports.createProduct = async (req, res) => {
   try {
-    const product = await Product.create(req.body);
+    const { name, price, inStock } = req.body;
+
+    const product = await Product.create({
+      name,
+      price,
+      inStock,
+      image: req.file ? req.file.path : "",
+    });
 
     res.status(201).json(product);
   } catch (error) {
@@ -14,9 +21,29 @@ exports.createProduct = async (req, res) => {
 
 exports.getAllProducts = async (req, res) => {
   try {
-    const products = await Product.find();
+    // Get page, limit and search query
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 6;
+    const search = req.query.search || "";
 
-    res.status(200).json(products);
+    const skip = (page - 1) * limit;
+    let filter = {};
+    if (search) {
+      filter = {
+        name: {
+          $regex: search,
+          $options: "i",
+        },
+      };
+    }
+    const products = await Product.find(filter).skip(skip).limit(limit);
+    const totalProducts = await Product.countDocuments(filter);
+    res.status(200).json({
+      products,
+      currentPage: page,
+      totalPages: Math.ceil(totalProducts / limit),
+      totalProducts,
+    });
   } catch (error) {
     res.status(500).json({
       message: error.message,

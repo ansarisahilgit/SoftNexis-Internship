@@ -7,24 +7,25 @@ function AddProduct() {
   const [price, setPrice] = useState("");
   const [inStock, setInStock] = useState(true);
   const token = localStorage.getItem("token");
+  const [image, setImage] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const formData = new FormData();
+
+    formData.append("name", name);
+    formData.append("price", price);
+    formData.append("inStock", inStock);
+    formData.append("image", image);
+
     axios
-      .post(
-        "http://localhost:3000/products",
-        {
-          name,
-          price,
-          inStock,
+      .post("http://localhost:3000/products", formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
         },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      )
+      })
       .then((response) => {
         console.log(response.data);
 
@@ -32,6 +33,7 @@ function AddProduct() {
 
         setName("");
         setPrice("");
+        setImage(null);
         window.location.reload();
       })
       .catch((error) => {
@@ -71,6 +73,19 @@ function AddProduct() {
           <option value="true">True</option>
           <option value="false">False</option>
         </select>
+        <br />
+        <br />
+
+        <label>Product Image:</label>
+
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setImage(e.target.files[0])}
+        />
+
+        <br />
+        <br />
 
         <button type="submit">Add Product</button>
       </form>

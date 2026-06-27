@@ -2,8 +2,15 @@ const router = require("express").Router();
 const productController = require("../controllers/productController");
 const { validateProduct } = require("../middleware/validateProduct");
 const protect = require("../middleware/authMiddleware");
+const upload = require("../middleware/upload");
 
-router.post("/", protect, validateProduct, productController.createProduct);
+router.post(
+  "/",
+  protect,
+  upload.single("image"),
+  validateProduct,
+  productController.createProduct,
+);
 
 router.get("/", productController.getAllProducts);
 
