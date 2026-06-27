@@ -17,10 +17,11 @@ const productSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    image: {
+      type: String,
+      default: "",
+    },
   },
   { timestamps: true },
 );
-productSchema.index({
-  name: "text",
-});
 module.exports = mongoose.model("Product", productSchema);

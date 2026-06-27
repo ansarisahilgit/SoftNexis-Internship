@@ -50,7 +50,7 @@ function ProductList() {
       .then((response) => {
         console.log(response.data);
         alert("Product Deleted");
-        window.location.reload();
+        fetchProducts();
       })
       .catch((error) => {
         console.log(error);
@@ -76,7 +76,7 @@ function ProductList() {
       .then((response) => {
         console.log(response.data);
         alert("Product Updated Successfully");
-        window.location.reload();
+        fetchProducts();
       })
       .catch((error) => {
         console.log(error);
@@ -98,6 +98,19 @@ function ProductList() {
 
       {products.map((product) => (
         <div key={product._id} className="product-card">
+          {product.image && (
+            <img
+              src={product.image}
+              alt={product.name}
+              style={{
+                width: "150px",
+                height: "150px",
+                objectFit: "cover",
+                borderRadius: "10px",
+                marginBottom: "10px",
+              }}
+            />
+          )}
           <h3>{product.name}</h3>
           <p>Price: {product.price}</p>
           <p>In Stock: {product.inStock ? "Yes" : "No"}</p>
