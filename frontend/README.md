@@ -1,229 +1,226 @@
-# Task 3 - JWT Authentication (MERN Stack)
+# Task 4 – Advanced Features & Optimization
 
-## Overview
+## 📖 Overview
 
-This project implements JWT (JSON Web Token) based authentication for the MERN Stack CRUD application developed in previous tasks.
-
-The application allows users to register, log in, and securely access protected product management features using JWT authentication.
+Task 4 focuses on enhancing the MERN Stack Product Management application by implementing advanced backend and frontend features. The objective was to improve application performance, user experience, and state management while following industry-standard development practices.
 
 ---
 
-## Features
+## 🚀 Features Implemented
 
-### Authentication
+### 📄 Server-side Pagination
 
-- User Registration
-- User Login
-- Password Hashing using bcryptjs
-- JWT Token Generation
-- JWT Verification Middleware
-- Protected Backend Routes
+* Implemented pagination using `page` and `limit` query parameters.
+* Optimized database queries with MongoDB `skip()` and `limit()`.
+* Returned pagination metadata including:
 
-### Product Management
+  * Current Page
+  * Total Pages
+  * Total Products
 
-- Create Product
-- View Products
-- Update Product
-- Delete Product
+### 🔍 Product Search
 
-All product operations require a valid JWT token.
+* Added dynamic product search functionality.
+* Implemented case-insensitive partial search using MongoDB Regular Expressions (`$regex`).
+* Integrated search with pagination for efficient filtering.
 
----
+### 🖼️ Product Image Upload
 
-## Tech Stack
+* Integrated **Multer** middleware for file uploads.
+* Configured **Cloudinary** for cloud-based image storage.
+* Stored uploaded image URLs in MongoDB.
+* Displayed product images dynamically in the React frontend.
 
-### Frontend
+### ⚡ API Optimization
 
-- React.js
-- React Router DOM
-- Axios
-- CSS
+* Improved API responses using pagination.
+* Reduced unnecessary database reads by fetching only required records.
+* Combined search and pagination into a single optimized endpoint.
 
-### Backend
+### ⚛️ Redux Toolkit Integration
 
-- Node.js
-- Express.js
-- MongoDB Atlas
-- Mongoose
+* Configured Redux Toolkit Store.
+* Created Product Slice.
+* Implemented asynchronous API requests using `createAsyncThunk`.
+* Managed global product state using Redux.
+* Integrated Redux with React using:
 
-### Authentication
-
-- JWT (jsonwebtoken)
-- bcryptjs
-
----
-
-## Project Structure
-
-```
-backend
-│
-├── controllers
-│   ├── authController.js
-│   └── productController.js
-│
-├── middleware
-│   └── authMiddleware.js
-│
-├── models
-│   ├── User.js
-│   └── Product.js
-│
-├── routes
-│   ├── authRoutes.js
-│   └── productRoutes.js
-│
-├── .env
-├── server.js
-└── package.json
-
-
-frontend
-│
-├── components
-│   ├── AddProduct.js
-│   ├── ProductList.js
-│   └── ProtectedRoute.js
-│
-├── pages
-│   ├── Home.js
-│   ├── Login.js
-│   └── Register.js
-│
-├── App.js
-└── package.json
-```
+  * `Provider`
+  * `useSelector`
+  * `useDispatch`
 
 ---
 
-## Installation
+# 🛠️ Technologies Used
 
-### Backend
+## Frontend
 
-```bash
-cd backend
+* React.js
+* Redux Toolkit
+* React Redux
+* Axios
+* React Router DOM
+* HTML5
+* CSS3
 
-npm install
+## Backend
 
-npm run dev
-```
+* Node.js
+* Express.js
 
-### Frontend
+## Database
 
-```bash
-cd frontend
+* MongoDB Atlas
+* Mongoose
 
-npm install
+## Cloud Storage
 
-npm start
+* Cloudinary
+* Multer
+* Multer Storage Cloudinary
+
+---
+
+# 📂 Project Structure
+
+```text
+backend/
+│
+├── config/
+│   └── cloudinary.js
+│
+├── controllers/
+├── middleware/
+│   └── upload.js
+├── models/
+├── routes/
+└── server.js
+
+frontend/
+│
+├── src/
+│   ├── components/
+│   ├── redux/
+│   │   ├── store.js
+│   │   └── productsSlice.js
+│   ├── pages/
+│   └── styles/
 ```
 
 ---
 
-## Environment Variables
+# ✨ Implemented Functionalities
 
-Create a `.env` file inside the backend folder.
-
-```env
-PORT=3000
-
-MONGO_URI=your_mongodb_connection_string
-
-JWT_SECRET=your_secret_key
-```
-
----
-
-## API Endpoints
-
-### Authentication
-
-### Register User
-
-```
-POST /api/auth/register
-```
-
-### Login User
-
-```
-POST /api/auth/login
-```
+* Server-side Pagination
+* Product Search
+* Partial Search using Regex
+* Product Image Upload
+* Cloudinary Integration
+* Multer Middleware
+* Dynamic Image Rendering
+* Redux Store Configuration
+* Global State Management
+* Async API Calls using createAsyncThunk
+* Optimized Product Listing
 
 ---
 
-### Products
+# ⚙️ API Endpoints
 
-### Get All Products
+## Get All Products
 
-```
+```http
 GET /products
 ```
 
-### Add Product
+Supports:
 
+```http
+GET /products?page=1&limit=6
 ```
+
+Search:
+
+```http
+GET /products?search=laptop
+```
+
+Combined:
+
+```http
+GET /products?page=1&limit=6&search=laptop
+```
+
+---
+
+## Create Product
+
+```http
 POST /products
 ```
 
-### Update Product
+Content Type:
 
+```text
+multipart/form-data
 ```
+
+Fields:
+
+* name
+* price
+* inStock
+* image
+
+---
+
+## Update Product
+
+```http
 PUT /products/:id
 ```
 
-### Delete Product
+---
 
-```
+## Delete Product
+
+```http
 DELETE /products/:id
 ```
 
-> All Product routes require a valid JWT token.
+---
+
+# 📌 Learning Outcomes
+
+Through this task, I gained practical experience in:
+
+* Server-side Pagination
+* MongoDB Query Optimization
+* Regular Expression Search
+* File Upload Handling using Multer
+* Cloud-based Image Storage using Cloudinary
+* Redux Toolkit State Management
+* createAsyncThunk
+* React Global State Management
+* Optimized MERN Application Development
 
 ---
 
-## Authentication Flow
-
-1. User registers with email and password.
-2. Password is hashed using bcryptjs.
-3. User logs in.
-4. Server generates a JWT token.
-5. Token is stored in browser localStorage.
-6. Frontend sends the token in the Authorization header.
-7. Backend verifies the token before allowing access to protected routes.
-
----
-
-## Security Features
-
-- Password Hashing using bcryptjs
-- JWT Authentication
-- Protected API Routes
-- Authorization Middleware
-- Token Verification
-
----
-
-## Screenshots
+# 📷 Suggested Screenshots
 
 Include screenshots of:
 
-- User Registration
-- User Login
-- JWT Token Response
-- Add Product
-- Product List
-- Update Product
-- Delete Product
+* Product List
+* Pagination
+* Product Search
+* Add Product Form
+* Image Upload
+* Cloudinary Dashboard
+* Redux Product Management
+* MongoDB Atlas Collection
 
 ---
 
-## Author
+# 🎯 Outcome
 
-**Md Sahil Ansari**
-
-B.Tech Computer Science & Engineering
-
-SoftNexis MERN Stack Internship
-
-Task 3 – JWT Authentication
+Task 4 transformed the basic CRUD application into a more scalable and production-oriented MERN application by incorporating modern features such as server-side pagination, efficient searching, cloud image storage, and centralized state management using Redux Toolkit.
