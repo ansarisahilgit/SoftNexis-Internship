@@ -1,42 +1,44 @@
 # SoftNexis Internship – MERN Stack
 
-A repository containing my MERN Stack internship work at **SoftNexis**, showcasing backend development, frontend development, database integration, authentication, and Git/GitHub workflow through task-based assignments.
+A comprehensive MERN Stack internship project developed during my internship at **SoftNexis**. This repository demonstrates full-stack web development using the **MERN Stack**, covering backend API development, frontend development, authentication, database integration, advanced features, and professional Git/GitHub workflow through task-based assignments.
 
 ---
 
-## 📖 About
+# 📖 About
 
-This repository documents my learning and project development during the SoftNexis MERN Stack Internship. Each task focuses on a different aspect of full-stack web development using the MERN stack while following professional development practices such as Git branching, pull requests, documentation, and weekly progress tracking.
+This repository documents my learning and project development during the **SoftNexis MERN Stack Internship**. Each task focuses on different aspects of full-stack web development while following professional software development practices such as Git branching, pull requests, documentation, and weekly progress tracking.
 
 ---
 
-## 🛠️ Tech Stack
+# 🛠️ Tech Stack
 
-### Frontend
-
+## Frontend
 - React.js
 - React Router DOM
+- Redux Toolkit
+- React Redux
 - Axios
 - HTML5
 - CSS3
 
-### Backend
-
+## Backend
 - Node.js
 - Express.js
 
-### Database
-
+## Database
 - MongoDB Atlas
 - Mongoose
 
-### Authentication
-
+## Authentication
 - JSON Web Token (JWT)
 - bcryptjs
 
-### Tools
+## Cloud Storage
+- Cloudinary
+- Multer
+- Multer Storage Cloudinary
 
+## Tools
 - Git
 - GitHub
 - Postman
@@ -44,12 +46,13 @@ This repository documents my learning and project development during the SoftNex
 
 ---
 
-## 📂 Repository Structure
+# 📂 Repository Structure
 
 ```
 SoftNexis-Internship/
 │
 ├── backend/
+│   ├── config/
 │   ├── controllers/
 │   ├── middleware/
 │   ├── models/
@@ -58,8 +61,13 @@ SoftNexis-Internship/
 │   └── package.json
 │
 ├── frontend/
-│   ├── src/
 │   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── redux/
+│   │   ├── styles/
+│   │   └── App.js
 │   └── package.json
 │
 ├── reports/
@@ -72,6 +80,8 @@ SoftNexis-Internship/
 ---
 
 # 📋 Internship Tasks
+
+---
 
 ## ✅ Task 1 – CRUD REST API
 
@@ -142,16 +152,42 @@ Implemented secure authentication and authorization using JSON Web Tokens.
 
 ### Technologies
 
-- JWT
+- JSON Web Token (JWT)
 - bcryptjs
 - React Router DOM
 - Axios
 
 ---
 
-## ⏳ Task 4
+## ✅ Task 4 – Advanced Features & Optimization
 
-To be completed.
+### Description
+
+Enhanced the MERN application with advanced features including server-side pagination, product search, image uploads, API optimization, and Redux Toolkit state management.
+
+### Features
+
+- Server-side Pagination
+- Product Search
+- Partial Search using Regular Expressions (Regex)
+- Cloudinary Image Upload
+- Multer File Upload Middleware
+- Product Image Storage
+- Redux Toolkit Integration
+- Redux Store Configuration
+- createAsyncThunk API Calls
+- Global State Management
+- Optimized Product Listing
+
+### Technologies
+
+- Redux Toolkit
+- React Redux
+- Multer
+- Cloudinary
+- MongoDB
+- Express.js
+- Axios
 
 ---
 
@@ -199,6 +235,12 @@ PORT=3000
 MONGO_URI=your_mongodb_connection_string
 
 JWT_SECRET=your_secret_key
+
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+
+CLOUDINARY_API_KEY=your_api_key
+
+CLOUDINARY_API_SECRET=your_api_secret
 ```
 
 ---
@@ -207,13 +249,20 @@ JWT_SECRET=your_secret_key
 
 - RESTful API Development
 - MongoDB Atlas Integration
-- React Frontend
 - CRUD Operations
+- React Frontend
 - JWT Authentication
-- Password Encryption
-- Protected Routes
+- Password Encryption using bcryptjs
+- Protected Backend Routes
+- Protected Frontend Routes
 - Authorization Middleware
 - API Integration using Axios
+- Redux Toolkit State Management
+- Product Search
+- Server-side Pagination
+- Cloudinary Image Upload
+- Multer File Handling
+- Product Image Management
 - Responsive Navigation
 - Git Branching Workflow
 - GitHub Pull Requests
@@ -226,8 +275,8 @@ JWT_SECRET=your_secret_key
 - ✅ Task 1 Completed
 - ✅ Task 2 Completed
 - ✅ Task 3 Completed
-- ⏳ Task 4 In Progress
-- ⏳ Final Internship Evaluation
+- ✅ Task 4 Completed
+- ✅ MERN Stack Internship Successfully Completed
 
 ---
 
@@ -236,12 +285,40 @@ JWT_SECRET=your_secret_key
 Add screenshots for:
 
 - Task 1 API Testing
-- MongoDB Atlas
-- React Frontend
+- MongoDB Atlas Database
+- React Home Page
+- Product Listing
+- Add Product
+- Update Product
+- Delete Product
 - User Registration
 - User Login
 - JWT Authentication
-- Product CRUD Operations
+- Pagination
+- Product Search
+- Image Upload
+- Cloudinary Dashboard
+- Redux Product Management
+
+---
+
+# 🎯 Learning Outcomes
+
+Through this internship I gained practical experience in:
+
+- Backend API Development using Express.js
+- Frontend Development using React.js
+- MongoDB Database Design
+- REST API Development
+- JWT Authentication & Authorization
+- Redux Toolkit State Management
+- Cloudinary Image Upload Integration
+- Multer File Upload Middleware
+- Product Search & Pagination
+- Axios API Integration
+- Git & GitHub Workflow
+- Professional Project Structure
+- Full-Stack MERN Development
 
 ---
 
@@ -249,23 +326,12 @@ Add screenshots for:
 
 **Md Sahil Ansari**
 
-B.Tech – Computer Science & Engineering
+🎓 B.Tech – Computer Science & Engineering
 
-MERN Stack Intern – SoftNexis
+💼 MERN Stack Intern – SoftNexis
 
-GitHub: https://github.com/ansarisahilgit
+🔗 GitHub: https://github.com/ansarisahilgit
 
 ---
 
-## ⭐ Learning Outcomes
-
-Through this internship I gained practical experience in:
-
-- Backend API Development
-- Frontend Development with React
-- Database Design using MongoDB
-- JWT Authentication
-- REST API Integration
-- Git & GitHub Workflow
-- Professional Project Structure
-- Full-Stack MERN Development
+## ⭐ If you found this project useful, consider giving it a star!
