@@ -8,23 +8,32 @@ function ProductList() {
   const [editName, setEditName] = useState("");
   const [editPrice, setEditPrice] = useState("");
   const [editInStock, setEditInStock] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  useEffect(() => {
+  const fetchProducts = () => {
     const token = localStorage.getItem("token");
+
     axios
-      .get("http://localhost:3000/products", {
+      .get(`http://localhost:3000/products?page=${currentPage}&limit=6`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => {
         console.log(response.data);
-        setProducts(response.data);
+
+        setProducts(response.data.products);
+        setTotalPages(response.data.totalPages);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, [currentPage]);
 
   const deleteProduct = (id) => {
     const token = localStorage.getItem("token");
@@ -114,6 +123,25 @@ function ProductList() {
           )}
         </div>
       ))}
+      <div style={{ marginTop: "20px" }}>
+        <button
+          onClick={() => setCurrentPage(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+
+        <span style={{ margin: "0 15px" }}>
+          Page {currentPage} of {totalPages}
+        </span>
+
+        <button
+          onClick={() => setCurrentPage(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }
