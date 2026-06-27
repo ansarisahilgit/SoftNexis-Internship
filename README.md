@@ -1,337 +1,226 @@
-# SoftNexis Internship – MERN Stack
+# Task 4 – Advanced Features & Optimization
 
-A comprehensive MERN Stack internship project developed during my internship at **SoftNexis**. This repository demonstrates full-stack web development using the **MERN Stack**, covering backend API development, frontend development, authentication, database integration, advanced features, and professional Git/GitHub workflow through task-based assignments.
+## 📖 Overview
 
----
-
-# 📖 About
-
-This repository documents my learning and project development during the **SoftNexis MERN Stack Internship**. Each task focuses on different aspects of full-stack web development while following professional software development practices such as Git branching, pull requests, documentation, and weekly progress tracking.
+Task 4 focuses on enhancing the MERN Stack Product Management application by implementing advanced backend and frontend features. The objective was to improve application performance, user experience, and state management while following industry-standard development practices.
 
 ---
 
-# 🛠️ Tech Stack
+## 🚀 Features Implemented
+
+### 📄 Server-side Pagination
+
+* Implemented pagination using `page` and `limit` query parameters.
+* Optimized database queries with MongoDB `skip()` and `limit()`.
+* Returned pagination metadata including:
+
+  * Current Page
+  * Total Pages
+  * Total Products
+
+### 🔍 Product Search
+
+* Added dynamic product search functionality.
+* Implemented case-insensitive partial search using MongoDB Regular Expressions (`$regex`).
+* Integrated search with pagination for efficient filtering.
+
+### 🖼️ Product Image Upload
+
+* Integrated **Multer** middleware for file uploads.
+* Configured **Cloudinary** for cloud-based image storage.
+* Stored uploaded image URLs in MongoDB.
+* Displayed product images dynamically in the React frontend.
+
+### ⚡ API Optimization
+
+* Improved API responses using pagination.
+* Reduced unnecessary database reads by fetching only required records.
+* Combined search and pagination into a single optimized endpoint.
+
+### ⚛️ Redux Toolkit Integration
+
+* Configured Redux Toolkit Store.
+* Created Product Slice.
+* Implemented asynchronous API requests using `createAsyncThunk`.
+* Managed global product state using Redux.
+* Integrated Redux with React using:
+
+  * `Provider`
+  * `useSelector`
+  * `useDispatch`
+
+---
+
+# 🛠️ Technologies Used
 
 ## Frontend
-- React.js
-- React Router DOM
-- Redux Toolkit
-- React Redux
-- Axios
-- HTML5
-- CSS3
+
+* React.js
+* Redux Toolkit
+* React Redux
+* Axios
+* React Router DOM
+* HTML5
+* CSS3
 
 ## Backend
-- Node.js
-- Express.js
+
+* Node.js
+* Express.js
 
 ## Database
-- MongoDB Atlas
-- Mongoose
 
-## Authentication
-- JSON Web Token (JWT)
-- bcryptjs
+* MongoDB Atlas
+* Mongoose
 
 ## Cloud Storage
-- Cloudinary
-- Multer
-- Multer Storage Cloudinary
 
-## Tools
-- Git
-- GitHub
-- Postman
-- Visual Studio Code
+* Cloudinary
+* Multer
+* Multer Storage Cloudinary
 
 ---
 
-# 📂 Repository Structure
+# 📂 Project Structure
 
-```
-SoftNexis-Internship/
+```text
+backend/
 │
-├── backend/
-│   ├── config/
-│   ├── controllers/
-│   ├── middleware/
-│   ├── models/
-│   ├── routes/
-│   ├── server.js
-│   └── package.json
+├── config/
+│   └── cloudinary.js
 │
-├── frontend/
-│   ├── public/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── redux/
-│   │   ├── styles/
-│   │   └── App.js
-│   └── package.json
+├── controllers/
+├── middleware/
+│   └── upload.js
+├── models/
+├── routes/
+└── server.js
+
+frontend/
 │
-├── reports/
-│
-├── diary/
-│
-└── README.md
+├── src/
+│   ├── components/
+│   ├── redux/
+│   │   ├── store.js
+│   │   └── productsSlice.js
+│   ├── pages/
+│   └── styles/
 ```
 
 ---
 
-# 📋 Internship Tasks
+# ✨ Implemented Functionalities
+
+* Server-side Pagination
+* Product Search
+* Partial Search using Regex
+* Product Image Upload
+* Cloudinary Integration
+* Multer Middleware
+* Dynamic Image Rendering
+* Redux Store Configuration
+* Global State Management
+* Async API Calls using createAsyncThunk
+* Optimized Product Listing
 
 ---
 
-## ✅ Task 1 – CRUD REST API
+# ⚙️ API Endpoints
 
-### Description
+## Get All Products
 
-Developed a RESTful API for Product Management using Express.js and MongoDB.
+```http
+GET /products
+```
 
-### Features
+Supports:
 
-- Create Product
-- Read Products
-- Update Product
-- Delete Product
-- MongoDB Atlas Integration
-- Express Validator
-- REST API Testing using Postman
+```http
+GET /products?page=1&limit=6
+```
 
-### Technologies
+Search:
 
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
+```http
+GET /products?search=laptop
+```
 
----
+Combined:
 
-## ✅ Task 2 – React Frontend
-
-### Description
-
-Built a React frontend to consume the REST API developed in Task 1.
-
-### Features
-
-- Home Page
-- Product Listing
-- Add Product
-- Update Product
-- Delete Product
-- Axios API Integration
-- React Router Navigation
-
-### Technologies
-
-- React.js
-- Axios
-- React Router DOM
-
----
-
-## ✅ Task 3 – JWT Authentication
-
-### Description
-
-Implemented secure authentication and authorization using JSON Web Tokens.
-
-### Features
-
-- User Registration
-- User Login
-- Password Hashing using bcryptjs
-- JWT Token Generation
-- JWT Authentication Middleware
-- Protected Backend Routes
-- Protected Frontend Routes
-- Local Storage Authentication
-- Logout Functionality
-
-### Technologies
-
-- JSON Web Token (JWT)
-- bcryptjs
-- React Router DOM
-- Axios
-
----
-
-## ✅ Task 4 – Advanced Features & Optimization
-
-### Description
-
-Enhanced the MERN application with advanced features including server-side pagination, product search, image uploads, API optimization, and Redux Toolkit state management.
-
-### Features
-
-- Server-side Pagination
-- Product Search
-- Partial Search using Regular Expressions (Regex)
-- Cloudinary Image Upload
-- Multer File Upload Middleware
-- Product Image Storage
-- Redux Toolkit Integration
-- Redux Store Configuration
-- createAsyncThunk API Calls
-- Global State Management
-- Optimized Product Listing
-
-### Technologies
-
-- Redux Toolkit
-- React Redux
-- Multer
-- Cloudinary
-- MongoDB
-- Express.js
-- Axios
-
----
-
-# 🚀 Installation
-
-## Clone Repository
-
-```bash
-git clone https://github.com/ansarisahilgit/SoftNexis-Internship.git
+```http
+GET /products?page=1&limit=6&search=laptop
 ```
 
 ---
 
-## Backend Setup
+## Create Product
 
-```bash
-cd backend
+```http
+POST /products
+```
 
-npm install
+Content Type:
 
-npm run dev
+```text
+multipart/form-data
+```
+
+Fields:
+
+* name
+* price
+* inStock
+* image
+
+---
+
+## Update Product
+
+```http
+PUT /products/:id
 ```
 
 ---
 
-## Frontend Setup
+## Delete Product
 
-```bash
-cd frontend
-
-npm install
-
-npm start
+```http
+DELETE /products/:id
 ```
 
 ---
 
-# 🔑 Environment Variables
+# 📌 Learning Outcomes
 
-Create a `.env` file inside the **backend** directory.
+Through this task, I gained practical experience in:
 
-```env
-PORT=3000
-
-MONGO_URI=your_mongodb_connection_string
-
-JWT_SECRET=your_secret_key
-
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-
-CLOUDINARY_API_KEY=your_api_key
-
-CLOUDINARY_API_SECRET=your_api_secret
-```
+* Server-side Pagination
+* MongoDB Query Optimization
+* Regular Expression Search
+* File Upload Handling using Multer
+* Cloud-based Image Storage using Cloudinary
+* Redux Toolkit State Management
+* createAsyncThunk
+* React Global State Management
+* Optimized MERN Application Development
 
 ---
 
-# 📌 Features Implemented
+# 📷 Suggested Screenshots
 
-- RESTful API Development
-- MongoDB Atlas Integration
-- CRUD Operations
-- React Frontend
-- JWT Authentication
-- Password Encryption using bcryptjs
-- Protected Backend Routes
-- Protected Frontend Routes
-- Authorization Middleware
-- API Integration using Axios
-- Redux Toolkit State Management
-- Product Search
-- Server-side Pagination
-- Cloudinary Image Upload
-- Multer File Handling
-- Product Image Management
-- Responsive Navigation
-- Git Branching Workflow
-- GitHub Pull Requests
+Include screenshots of:
+
+* Product List
+* Pagination
+* Product Search
+* Add Product Form
+* Image Upload
+* Cloudinary Dashboard
+* Redux Product Management
+* MongoDB Atlas Collection
 
 ---
 
-# 📈 Project Status
+# 🎯 Outcome
 
-- ✅ Repository Setup
-- ✅ Task 1 Completed
-- ✅ Task 2 Completed
-- ✅ Task 3 Completed
-- ✅ Task 4 Completed
-- ✅ MERN Stack Internship Successfully Completed
-
----
-
-# 📷 Screenshots
-
-Add screenshots for:
-
-- Task 1 API Testing
-- MongoDB Atlas Database
-- React Home Page
-- Product Listing
-- Add Product
-- Update Product
-- Delete Product
-- User Registration
-- User Login
-- JWT Authentication
-- Pagination
-- Product Search
-- Image Upload
-- Cloudinary Dashboard
-- Redux Product Management
-
----
-
-# 🎯 Learning Outcomes
-
-Through this internship I gained practical experience in:
-
-- Backend API Development using Express.js
-- Frontend Development using React.js
-- MongoDB Database Design
-- REST API Development
-- JWT Authentication & Authorization
-- Redux Toolkit State Management
-- Cloudinary Image Upload Integration
-- Multer File Upload Middleware
-- Product Search & Pagination
-- Axios API Integration
-- Git & GitHub Workflow
-- Professional Project Structure
-- Full-Stack MERN Development
-
----
-
-# 👨‍💻 Author
-
-**Md Sahil Ansari**
-
-🎓 B.Tech – Computer Science & Engineering
-
-💼 MERN Stack Intern – SoftNexis
-
-🔗 GitHub: https://github.com/ansarisahilgit
-
----
-
-## ⭐ If you found this project useful, consider giving it a star!
+Task 4 transformed the basic CRUD application into a more scalable and production-oriented MERN application by incorporating modern features such as server-side pagination, efficient searching, cloud image storage, and centralized state management using Redux Toolkit.
