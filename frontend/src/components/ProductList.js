@@ -10,16 +10,20 @@ function ProductList() {
   const [editInStock, setEditInStock] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [search, setSearch] = useState("");
 
   const fetchProducts = () => {
     const token = localStorage.getItem("token");
 
     axios
-      .get(`http://localhost:3000/products?page=${currentPage}&limit=6`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      .get(
+        `http://localhost:3000/products?page=${currentPage}&limit=6&search=${search}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      })
+      )
       .then((response) => {
         console.log(response.data);
 
@@ -33,7 +37,7 @@ function ProductList() {
 
   useEffect(() => {
     fetchProducts();
-  }, [currentPage]);
+  }, [currentPage, search]);
 
   const deleteProduct = (id) => {
     const token = localStorage.getItem("token");
@@ -82,6 +86,15 @@ function ProductList() {
   return (
     <div className="products-container">
       <h2>Products</h2>
+      <input
+        type="text"
+        placeholder="Search products..."
+        value={search}
+        onChange={(e) => {
+          setSearch(e.target.value);
+          setCurrentPage(1);
+        }}
+      />
 
       {products.map((product) => (
         <div key={product._id} className="product-card">

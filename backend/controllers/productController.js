@@ -23,8 +23,9 @@ exports.getAllProducts = async (req, res) => {
     let filter = {};
     if (search) {
       filter = {
-        $text: {
-          $search: search,
+        name: {
+          $regex: search,
+          $options: "i",
         },
       };
     }
