@@ -14,11 +14,22 @@ exports.createProduct = async (req, res) => {
 
 exports.getAllProducts = async (req, res) => {
   try {
+    // Get page, limit and search query
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 6;
+    const search = req.query.search || "";
+
     const skip = (page - 1) * limit;
-    const products = await Product.find().skip(skip).limit(limit);
-    const totalProducts = await Product.countDocuments();
+    let filter = {};
+    if (search) {
+      filter = {
+        $text: {
+          $search: search,
+        },
+      };
+    }
+    const products = await Product.find(filter).skip(skip).limit(limit);
+    const totalProducts = await Product.countDocuments(filter);
     res.status(200).json({
       products,
       currentPage: page,
